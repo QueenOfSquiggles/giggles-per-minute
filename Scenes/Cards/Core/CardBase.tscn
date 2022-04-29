@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Cards/Core/CardBase.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+
+[node name="Card Base" type="Control"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 71.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 1
+script = ExtResource( 1 )
+
+[node name="CardPanel" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 16, 16 )
+mouse_default_cursor_shape = 6
+
+[node name="TextureRect" type="TextureRect" parent="CardPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 57.0
+margin_bottom = 57.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 57.0
+margin_bottom = 57.0
+mouse_filter = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="CardPanel/VBoxContainer"]
+margin_top = 36.0
+margin_right = 50.0
+margin_bottom = 50.0
+text = "Card name"
+clip_text = true
+
+[node name="CardOptions" type="VBoxContainer" parent="."]
+margin_left = -129.0
+margin_right = -17.0
+margin_bottom = 178.0
+rect_pivot_offset = Vector2( 90, 0 )
+
+[node name="BtnOpenInspector" type="Button" parent="CardOptions"]
+margin_right = 112.0
+margin_bottom = 20.0
+text = "Open Inspector"
+
+[node name="Control" type="HSeparator" parent="CardOptions"]
+margin_top = 24.0
+margin_right = 112.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 10 )
+
+[node name="BtnDelete" type="Button" parent="CardOptions"]
+margin_top = 38.0
+margin_right = 112.0
+margin_bottom = 58.0
+hint_tooltip = "Deletes this card, currently there is no confirmation"
+text = "Delete Card"
+
+[connection signal="gui_input" from="CardPanel" to="." method="_on_CardPanel_gui_input"]
+[connection signal="pressed" from="CardOptions/BtnOpenInspector" to="." method="_on_BtnOpenInspector_pressed"]
+[connection signal="pressed" from="CardOptions/BtnDelete" to="." method="_on_BtnDelete_pressed"]

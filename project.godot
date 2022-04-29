@@ -1,0 +1,52 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Control",
+"class": "Board",
+"language": "GDScript",
+"path": "res://Scenes/Displays/BoardDisplay.gd"
+}, {
+"base": "Control",
+"class": "CardBase",
+"language": "GDScript",
+"path": "res://Scenes/Cards/Core/CardBase.gd"
+} ]
+_global_script_class_icons={
+"Board": "",
+"CardBase": ""
+}
+
+[application]
+
+config/name="GigglesPerMinute"
+config/description="A general purpose Card-Board Application made in Godot. Intended to serve as a virtual cork board where you can add as many cards/notes as you like and nest boards inside of boards"
+run/main_scene="res://Scenes/Displays/BoardDisplay.tscn"
+run/low_processor_mode=true
+config/icon="res://icon.png"
+
+[autoload]
+
+CardFactory="*res://Scripts/CardFactory.gd"
+BoardManager="*res://Scripts/BoardManager.gd"
+EventBus="*res://Scripts/EventBus.gd"
+
+[rendering]
+
+quality/driver/fallback_to_gles2=true
+quality/intended_usage/framebuffer_allocation=1
+quality/intended_usage/framebuffer_allocation.mobile=1
+quality/shadows/filter_mode=0
+quality/reflections/texture_array_reflections=false
+quality/reflections/high_quality_ggx=false
+quality/depth_prepass/enable=false
+quality/lightmapping/use_bicubic_sampling=false
+quality/subsurface_scattering/weight_samples=false
+environment/default_environment="res://default_env.tres"
